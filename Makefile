@@ -31,7 +31,7 @@ FT_PRINTF_SRC		:= $(addprefix $(FT_PRINTF_DIR)/, $(FT_PRINTF_SRC_LIST))
 FT_PRINTF_OBJ_LST 	:= $(patsubst %.c, %.o, $(FT_PRINTF_SRC_LIST))
 FT_PRINTF_OBJ		:= $(addprefix $(OBJDIR)/, $(FT_PRINTF_OBJ_LST))
 
-CFLAGS				:= -Wall -Wextra -Werror
+CFLAGS				:= -Wall -Wextra -Werror -c
 
 all: $(NAME)
 
@@ -39,13 +39,13 @@ $(NAME): $(LIBFT_OBJ) $(GNL_OBJ) $(FT_PRINTF_OBJ)
 	ar rcs $(NAME) $(LIBFT_OBJ) $(GNL_OBJ) $(FT_PRINTF_OBJ)
 
 $(OBJDIR)/%.o: $(LIBFT_DIR)/%.c | $(OBJDIR)
-	cc $(CFLAGS) -I$(INCLUDES) -c -o $@ $< 
+	$(CC) $(CFLAGS) -I$(INCLUDES) -o $@ $< 
 
 $(OBJDIR)/%.o: $(GNL_DIR)/%.c | $(OBJDIR)
-	cc $(CFLAGS) -DBUFFER_SIZE=42 -I$(INCLUDES) -c -o $@ $< 
+	$(CC) $(CFLAGS) -DBUFFER_SIZE=42 -I$(INCLUDES) -o $@ $< 
 
 $(OBJDIR)/%.o: $(FT_PRINTF_DIR)/%.c | $(OBJDIR)
-	cc $(CFLAGS) -I$(INCLUDES) -c -o $@ $< 
+	$(CC) $(CFLAGS) -I$(INCLUDES) -o $@ $< 
 
 $(OBJDIR):
 	mkdir obj
