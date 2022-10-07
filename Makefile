@@ -50,6 +50,9 @@ $(OBJDIR)/%.o: $(FT_PRINTF_DIR)/%.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir obj
 
+split: main.c $(LIBFT_DIR)/ft_split.c
+	gcc -O3 -Wall -Werror -Wextra main.c -Iincludes -L. -lft -o split && ./split
+
 clean: 
 	rm -rf $(OBJDIR)
 

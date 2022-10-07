@@ -14,7 +14,8 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft.h" 
+# include <stddef.h>
+//# include "libft.h" 
 
 # ifndef HEXBASELOW
 #  define HEXBASELOW "0123456789abcdef"
